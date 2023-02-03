@@ -266,6 +266,11 @@ body {
   font-size: 15px;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .btnCollection:active {
   box-shadow: inset -5px -5px 15px 0px #f5cc7b,
   inset 5px 5px 15px 0px #977532;
