@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 
 function Recommendation() {
 
     const [activity, setActivity] = useState('');
 
-    const getActivity = async() => {
+    const getActivity = useCallback(async() => {
         const response = await fetch('http://www.boredapi.com/api/activity/ ')
         const data = await response.json()
         setActivity(data.activity)
-    }
+    }, [])
 
     useEffect(() => {
         getActivity()
-    }, [])
+    }, [getActivity])
 
     const newActivity = (e) => {
         e.preventDefault()
