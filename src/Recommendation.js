@@ -5,11 +5,22 @@ function Recommendation() {
 
     const [activity, setActivity] = useState('');
 
-    const getActivity = useCallback(async() => {
-        const response = await fetch('https://www.boredapi.com/api/activity/ ')
-        const data = await response.json()
-        setActivity(data.activity)
-    }, [])
+    const getActivity = useCallback(async () => {
+            const response = await fetch('https://bored-api.appbrewery.com/random', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            setActivity(data.activity);
+        
+    }, []);
 
     useEffect(() => {
         getActivity()
