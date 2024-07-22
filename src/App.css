@@ -611,7 +611,7 @@ a {
   }
 }
 
-@media all and (max-width: 375px) {
+@media all and (max-width: 390px) {
   .AppColor {
     width: calc(100%-5px);
   }

@@ -3,25 +3,16 @@ import { useState, useEffect, useCallback } from "react";
 
 function Recommendation() {
 
-    const [activity, setActivity] = useState('');
+    const [activity, setActivity] = useState('')
 
     const getActivity = useCallback(async () => {
-            const response = await fetch('https://bored-api.appbrewery.com/random', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-
+            const response = await fetch('/random');
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error('Network response was not ok');
             }
-
             const data = await response.json();
             setActivity(data.activity);
-        
     }, []);
-
     useEffect(() => {
         getActivity()
     }, [getActivity])
