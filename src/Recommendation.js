@@ -6,7 +6,7 @@ function Recommendation() {
     const [activity, setActivity] = useState('')
 
     const getActivity = useCallback(async () => {
-            const response = await fetch('/random');
+            const response = await fetch('/api/random');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
